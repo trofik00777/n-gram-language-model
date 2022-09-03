@@ -1,5 +1,5 @@
 import argparse
-from fit import Model
+from train import Model
 
 
 def _parse_args():
