@@ -17,7 +17,7 @@ class Model:
     def fit(self, text: str):
         preproc_tokens = list(
             filter(lambda x: x.isalpha(), text.strip().lower().translate(
-                str.maketrans('', '', string.punctuation)
+                str.maketrans(string.punctuation, ' ' * len(string.punctuation))
             ).split())
         )
         for i_word in range(len(preproc_tokens) - 1):
@@ -31,7 +31,6 @@ class Model:
 
         generated = [first]  # type: list[str]
         for _ in range(length):
-            print(generated[-1])
             predict = np.random.choice(self.data.get(generated[-1], [np.random.choice(keys)]))
             generated.append(predict)
 
@@ -62,7 +61,7 @@ def main():
             model.fit(line)
     else:
         for filename in os.listdir(args.input_dir):
-            model.fit(open(f"{args.input_dir}/{filename}", 'r').read())
+            model.fit(open(f"{args.input_dir}/{filename}", 'r', encoding='utf-8').read())
 
     model.save(args.model)
 

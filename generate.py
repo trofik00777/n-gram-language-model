@@ -21,7 +21,7 @@ def main():
     else:
         generated_text = model.generate(args.length)
 
-    print(generated_text)
+    print(generated_text.strip())
 
 
 if __name__ == "__main__":
