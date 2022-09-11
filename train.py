@@ -61,7 +61,7 @@ def main():
             model.fit(line)
     else:
         for filename in os.listdir(args.input_dir):
-            model.fit(open(f"{args.input_dir}/{filename}", 'r', encoding='utf-8').read())
+            model.fit(open(f"{args.input_dir.rstrip('/')}/{filename}", 'r', encoding='utf-8').read())
 
     model.save(args.model)
 

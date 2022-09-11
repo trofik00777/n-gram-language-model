@@ -17,7 +17,7 @@ def main():
 
     model = Model(args.model)
     if args.prefix is not None:
-        generated_text = ' '.join(args.prefix[:-1]) + " " + model.generate(args.length, args.prefix[-1])
+        generated_text = ' '.join(args.prefix[:-1]) + " " + model.generate(args.length, args.prefix[-1].lower())
     else:
         generated_text = model.generate(args.length)
 
